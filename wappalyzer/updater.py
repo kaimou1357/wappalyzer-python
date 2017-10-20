@@ -11,11 +11,11 @@ logger = logging.getLogger(__name__)
 
 
 def _update_file(url, filename):
-    logger.debug('Updating file: %s from %s' % (filename, url))
+    print('Updating file: %s from %s' % (filename, url))
     r = requests.get(url)
     if r.status_code == 200:
         with open(filename, 'w') as f:
-            f.write(r.text)
+            f.write(r.text.encode('utf-8'))
 
 
 def _download_icon(url, filename):
